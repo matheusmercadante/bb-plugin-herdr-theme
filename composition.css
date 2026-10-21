@@ -308,10 +308,10 @@
 }
 
 @media(min-width:768px) {
-  :root[data-herdr-theme] [data-promptbox]:not([data-promptbox-compact]):not([data-promptbox-voice-active]) [data-promptbox-editor-scroll] { min-height:44px !important; }
+  :root[data-herdr-theme] [data-promptbox]:not([data-promptbox-compact]):not([data-promptbox-voice-active]) [data-promptbox-editor-scroll] { min-height:2.75rem !important; }
   :root[data-herdr-theme] :is([data-split-pane-id]:has(> [data-thread-window]), [data-split-pane-id] > div:has(> header):has(> div > [data-thread-window])):focus-within::before,
   :root[data-herdr-theme] [data-split-pane-id][data-focused="true"] > div:has(> header):has(> div > [data-thread-window])::before { border-color:var(--primary); }
-  :root[data-herdr-theme] :is([data-split-pane-id]:has(> [data-thread-window]), [data-split-pane-id] > div:has(> header):has(> div > [data-thread-window])) > header .bb-thread-title { background:var(--primary); color:var(--primary-foreground); padding:2px 10px; }
+  :root[data-herdr-theme] :is([data-split-pane-id]:has(> [data-thread-window]), [data-split-pane-id] > div:has(> header):has(> div > [data-thread-window])) > header .bb-thread-title { background:var(--primary); color:var(--primary-foreground); padding:0.125rem 0.625rem; }
   :root[data-herdr-theme] :is([data-split-pane-id]:has(> [data-thread-window]), [data-split-pane-id] > div:has(> header):has(> div > [data-thread-window])):focus-within > header .bb-thread-title { color:var(--primary-foreground); }
 }
 @media(min-width:768px) {

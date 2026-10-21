@@ -105,13 +105,13 @@
   :root[data-herdr-theme] [data-follow-up-composer-expanded] [data-promptbox]:not([data-promptbox-compact]):not([data-promptbox-voice-active]) [data-promptbox-action-row] {
     border-top:1px solid var(--primary);
     margin-inline:0;
-    padding:2px 0.5rem;
+    padding:0.125rem 0.5rem;
     gap:0.5rem;
   }
   :root[data-herdr-theme] [data-follow-up-composer-expanded]:has([data-promptbox]:not([data-promptbox-compact]):not([data-promptbox-voice-active])) [data-follow-up-composer-footer] {
     margin-top:0;
     padding-inline:0.5rem;
-    min-height:28px;
+    min-height:1.75rem;
     max-height:none;
     border-bottom:1px solid var(--border);
     border-radius:0;
@@ -129,3 +129,11 @@
     }
   }
 }
+
+/* Text size setting, applied by text-size.tsx. BB sizes text and spacing in
+   rem, so this scales the interface the way page zoom would, while BB keeps
+   its window controls centered on the macOS traffic lights. */
+:root[data-herdr-theme][data-herdr-text-size="90"] { font-size:90%; }
+:root[data-herdr-theme][data-herdr-text-size="110"] { font-size:110%; }
+:root[data-herdr-theme][data-herdr-text-size="120"] { font-size:120%; }
+:root[data-herdr-theme][data-herdr-text-size="130"] { font-size:130%; }
