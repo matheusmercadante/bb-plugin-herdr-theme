@@ -72,6 +72,13 @@ its own light versions. The picker labels them.
 
 *The palette picker in BB's settings.*
 
+## Text size
+
+Choose **Text size** in **Settings → Herdr Theme → Configuration** to enlarge
+or shrink BB's text and spacing from 90% to 130%. Prefer it over page zoom
+(⌘+): zoom also scales BB's window controls, which then sit below the macOS
+traffic lights. Reset zoom with ⌘0 when you switch.
+
 ## Optional branch names
 
 Turn on **Show branch names** in **Settings → Herdr Theme → Configuration**.

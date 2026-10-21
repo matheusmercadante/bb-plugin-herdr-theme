@@ -18,6 +18,11 @@ Compatibility release for BB 0.46. Requires BB 0.46 or newer.
 - Match sidebar rows whose thread link is nested in the row, and the selected
   row through `.bb-sidebar-selected-row`.
 - Hide the per-row provider logo BB 0.46 added, keeping one line per thread.
+- Add a Text size setting (90–130%). It scales the root font size instead of
+  page zoom, so BB's window controls stay aligned with the macOS traffic
+  lights. Text-related theme lengths move to rem so they scale with it.
+- Hide the sidebar toggle while the expanded sidebar shows the command line.
+  It returns when the sidebar is collapsed.
 - Repin `@get-bb/plugin-sdk` to 0.6.49 and type-check every source file.
 
 ## 0.5.0
