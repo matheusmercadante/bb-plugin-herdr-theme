@@ -13,19 +13,24 @@
 :root[data-herdr-theme] .group\/sidebar-section:has(> [data-sidebar-sticky-tier="label"] [title="Pinned"]) {
   padding-bottom: 0.5rem;
 }
-:root[data-herdr-theme] .group\/thread-row:has(> [data-sidebar-thread-id]),
+:root[data-herdr-theme] .group\/thread-row:has([data-sidebar-thread-id]),
 :root[data-herdr-theme] [data-sidebar-thread-id] {
   border-radius: 0;
 }
-:root[data-herdr-theme] .group\/thread-row:has(> [data-sidebar-thread-id]) :is(.bb-thread-title, .bb-sidebar-thread-title) {
+:root[data-herdr-theme] .group\/thread-row:has([data-sidebar-thread-id]) :is(.bb-thread-title, .bb-sidebar-thread-title) {
   font-weight: 400;
 }
-:root[data-herdr-theme] .group\/thread-row:has(> [data-sidebar-thread-id][aria-current="page"]) {
+/* BB 0.46 adds a provider logo to each row. The tree gutter already marks
+   rows, so the logo is hidden to keep one terminal line per entry. */
+:root[data-herdr-theme] .group\/thread-row [data-sidebar-thread-provider] {
+  display: none;
+}
+:root[data-herdr-theme] .group\/thread-row.bb-sidebar-selected-row {
   background: color-mix(in oklab, var(--primary) 16%, var(--sidebar));
   color: var(--sidebar-foreground);
   box-shadow: none;
 }
-:root[data-herdr-theme] .group\/thread-row:has(> [data-sidebar-thread-id][aria-current="page"]) :is(.bb-thread-title, .bb-sidebar-thread-title) {
+:root[data-herdr-theme] .group\/thread-row.bb-sidebar-selected-row :is(.bb-thread-title, .bb-sidebar-thread-title) {
   font-weight: 500;
 }
 /* Preserve native status icons and accessible labels. Only strengthen the
@@ -34,38 +39,20 @@
   color: var(--attention);
 }
 @media (forced-colors: active) {
-  :root[data-herdr-theme] .group\/thread-row:has(> [data-sidebar-thread-id][aria-current="page"]) {
+  :root[data-herdr-theme] .group\/thread-row.bb-sidebar-selected-row {
     outline: 1px solid Highlight;
     outline-offset: -1px;
   }
 }
 
-/* Keep work first and commands at the foot of the sidebar. */
-:root[data-herdr-theme] [data-testid="sidebar-navigation-region"]:has(.herdr-commands) { order: 2; flex-shrink: 0; position:relative; z-index:60; }
-:root[data-herdr-theme] [data-sidebar="footer"] { order: 3; }
-:root[data-herdr-theme] [data-testid="app-sidebar-navigation-divider"] { display: none; }
 :root[data-herdr-theme] [data-sidebar-project-id] div:has(> svg[data-icon="MessageSquare"] + p) > svg { display: none; }
 :root[data-herdr-theme] [data-sidebar-project-id] div:has(> svg[data-icon="MessageSquare"] + p)::before { content: "·" / ""; color: var(--subtle-foreground); }
 :root[data-herdr-theme] [data-sidebar-project-id] div:has(> svg[data-icon="MessageSquare"] + p) > p { text-transform: lowercase; color: var(--subtle-foreground); }
-.herdr-commands { display:flex; align-items:center; gap:4px; padding:8px; border-top:1px solid var(--border-seam); font-size:12px; }
-.herdr-commands button, .herdr-commands summary { cursor:pointer; padding:6px; min-height:32px; text-align:left; color:var(--muted-foreground); }
-.herdr-commands button:hover, .herdr-commands summary:hover, .herdr-commands button[aria-pressed="true"] { background:var(--state-hover); color:var(--foreground); }
-.herdr-commands button:focus-visible, .herdr-commands summary:focus-visible { outline:2px solid var(--ring); }
-.herdr-commands button:disabled { opacity:.5; cursor:default; }
-.herdr-commands details { margin-left:auto; position:relative; }
-.herdr-commands summary { list-style:none; }
-.herdr-commands summary::-webkit-details-marker { display:none; }
-.herdr-command-menu { position:absolute; bottom:100%; right:0; z-index:60; width:210px; max-height:60dvh; overflow:auto; padding:4px; background:var(--popover); border:1px solid var(--border); box-shadow:0 4px 16px #0003; }
-.herdr-command-menu button { display:block; width:100%; }
-@media (pointer:coarse) { .herdr-commands button, .herdr-commands summary { min-height:44px; } }
 /* Native child-thread guide spans are decorative; indentation remains. */
 :root[data-herdr-theme] [data-sidebar-project-id] span[aria-hidden="true"].w-px.bg-border-hairline { display:none; }
 
-/* Herdr uses lowercase command labels; work names keep their own casing. */
-.herdr-commands button, .herdr-commands summary { text-transform:lowercase; }
-
 /* Expose BB's real expand/collapse controls as tree markers. */
-:root[data-herdr-theme] .group\/thread-row:has(> [data-sidebar-thread-id]) button:is([aria-label^="Collapse "], [aria-label^="Expand "]) {
+:root[data-herdr-theme] .group\/thread-row:has([data-sidebar-thread-id]) button:is([aria-label^="Collapse "], [aria-label^="Expand "]) {
   order:-1;
   opacity:1;
   pointer-events:auto;
@@ -73,25 +60,21 @@
 /* One terminal line per desktop entry, including BB's fixed-height child rows. */
 @media (min-width:768px) and (not (pointer:coarse)) {
   :root[data-herdr-theme] [data-sidebar="content"]:has([data-sidebar-thread-id]) { --bb-sidebar-row-height:24px; }
-  :root[data-herdr-theme] .group\/thread-row:has(> [data-sidebar-thread-id]) { height:24px; margin-block:0; }
-  :root[data-herdr-theme] .group\/thread-row:has(> [data-sidebar-thread-id]) button { max-height:24px; }
-  :root[data-herdr-theme] .group\/thread-row:has(> [data-sidebar-thread-id]) :is(.bb-thread-title, .bb-sidebar-thread-title) { line-height:20px; }
+  :root[data-herdr-theme] .group\/thread-row:has([data-sidebar-thread-id]) { height:24px; margin-block:0; }
+  :root[data-herdr-theme] .group\/thread-row:has([data-sidebar-thread-id]) button { max-height:24px; }
+  :root[data-herdr-theme] .group\/thread-row:has([data-sidebar-thread-id]) :is(.bb-thread-title, .bb-sidebar-thread-title) { line-height:20px; }
   :root[data-herdr-theme] [data-sidebar-project-id] .space-y-px > *,
   :root[data-herdr-theme] [data-sidebar-project-id] .space-y-0\.5 > * { margin-block:0; }
   :root[data-herdr-theme] [data-sidebar-sticky-project-item] { margin-block:0 8px; }
 }
 /* Leaf dots share the same gutter as real parent expand controls. */
-:root[data-herdr-theme] .group\/thread-row:has(> [data-sidebar-thread-id]):not(:has(button:is([aria-label^="Collapse "], [aria-label^="Expand "]))) > span:has(:is(.bb-thread-title, .bb-sidebar-thread-title))::before {
+:root[data-herdr-theme] .group\/thread-row:has([data-sidebar-thread-id]):not(:has(button:is([aria-label^="Collapse "], [aria-label^="Expand "]))) > span:has(:is(.bb-thread-title, .bb-sidebar-thread-title))::before {
   content:"·" / "";
   width:20px;
   flex-shrink:0;
   text-align:center;
   color:var(--subtle-foreground);
 }
-/* Menu also reveals BB's original utility controls, preserving their actions. */
-:root[data-herdr-theme] [data-sidebar="sidebar"]:has(.herdr-commands) > [data-sidebar="footer"] { display:none; }
-:root[data-herdr-theme] [data-sidebar="sidebar"]:has(.herdr-commands details[open]) > [data-sidebar="footer"],
-:root[data-herdr-theme] [data-sidebar="sidebar"]:has(.herdr-commands) > [data-sidebar="footer"]:focus-within { display:flex; }
 
 /* Continuous tree strokes grow with native rows, including branch details.
    The arm meets the title; the last child's vertical stops at that arm. */

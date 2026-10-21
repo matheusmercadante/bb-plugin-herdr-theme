@@ -1,10 +1,10 @@
 {
   "name": "bb-plugin-herdr-theme",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "type": "module",
   "engines": {
-    "bb": ">=0.43",
-    "bbPluginSdk": ">=0.4.84"
+    "bb": ">=0.46",
+    "bbPluginSdk": ">=0.6.49"
   },
   "bb": {
     "name": "Herdr Theme",
@@ -107,8 +107,8 @@
       },
       {
         "id": "rose-pine",
-        "name": "Herdr Ros\u00e9 Pine",
-        "description": "Ros\u00e9 Pine colors with Herdr terminal styling.",
+        "name": "Herdr Rosé Pine",
+        "description": "Rosé Pine colors with Herdr terminal styling.",
         "css": "./themes/rose-pine.css",
         "codeTheme": {
           "dark": "rose-pine",
@@ -130,7 +130,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@get-bb/plugin-sdk": "0.4.84",
+    "@get-bb/plugin-sdk": "0.6.49",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

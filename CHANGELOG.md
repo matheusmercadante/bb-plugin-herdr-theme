@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.6.0
+
+Compatibility release for BB 0.46. Requires BB 0.46 or newer.
+
+- Stop registering the sidebar navigation slot, which BB 0.46 removed. The
+  failed registration aborted plugin setup, so BB loaded only the palette
+  colors and none of the framing, prompt, sidebar, or settings UI.
+- Remove the Herdr commands bar. BB's navigation rail now owns those commands.
+- Frame the conversation column BB 0.46 renders: the split pane itself for a
+  single pane, and the pane's inner column in split layouts.
+- Cut the frame line behind the new header action group.
+- Match sidebar rows whose thread link is nested in the row, and the selected
+  row through `.bb-sidebar-selected-row`.
+- Hide the per-row provider logo BB 0.46 added, keeping one line per thread.
+- Repin `@get-bb/plugin-sdk` to 0.6.49 and type-check every source file.
+
 ## 0.5.0
 
 First public release.

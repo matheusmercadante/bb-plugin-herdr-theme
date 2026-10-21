@@ -45,10 +45,10 @@ demo. They do not show private conversations or live agent runs.
 
 ## Install
 
-Requires BB 0.43 or newer. This installs the latest compatible 0.5 release:
+Requires BB 0.46 or newer. This installs the latest compatible 0.6 release:
 
 ```sh
-bb plugin install git:https://github.com/davideiffert/bb-plugin-herdr-theme@^0.5.0
+bb plugin install git:https://github.com/davideiffert/bb-plugin-herdr-theme@^0.6.0
 ```
 
 Open **Settings → Herdr Theme → Color schemes** to choose a palette. Use BB's
@@ -85,11 +85,12 @@ sidebars supplied by other plugins do not show these branch names.
 
 ## Compatibility
 
-Tested on BB 0.43. The theme styles parts of BB's current interface that can
+Tested on BB 0.46.1. Version 0.5 targets BB 0.43 and does not load on 0.46.
+The theme styles parts of BB's current interface that can
 change between releases. A new BB version may need a theme update.
 
 - The Folders plugin keeps its own thread list.
-- Compact Navigation and Herdr use the same navigation slot. Only one supplies the navigation at a time.
+- BB 0.46 removed the sidebar navigation slot, so the Herdr commands bar is gone. BB's navigation rail stays in place.
 - On phones, BB's sidebar and touch controls stay in place. The editor has been tried on an iPhone. Other phone checks used browser emulation. Microphone recording remains untested.
 - Workspace tabs and saved split arrangements are outside this theme's scope.
 
