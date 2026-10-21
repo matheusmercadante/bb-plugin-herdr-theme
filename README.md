@@ -90,7 +90,7 @@ The theme styles parts of BB's current interface that can
 change between releases. A new BB version may need a theme update.
 
 - The Folders plugin keeps its own thread list.
-- BB 0.46 removed the sidebar navigation slot, so the Herdr commands bar is gone. BB's navigation rail stays in place.
+- BB 0.46 removed the sidebar navigation slot. The commands line is now drawn by a content script and folds in BB's navigation rail and footer; Menu reveals the footer. The collapsed sidebar and phones keep BB's native rail.
 - On phones, BB's sidebar and touch controls stay in place. The editor has been tried on an iPhone. Other phone checks used browser emulation. Microphone recording remains untested.
 - Workspace tabs and saved split arrangements are outside this theme's scope.
 

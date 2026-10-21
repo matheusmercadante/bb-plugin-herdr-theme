@@ -191,3 +191,35 @@
 :root[data-herdr-theme] .bb-sidebar-thread-title[data-herdr-branch] {
   display:block;
 }
+
+/* BB 0.46 sidebar chrome. sidebar-commands.ts adds one command line at the
+   foot of the expanded desktop sidebar; BB's navigation rail, New thread row,
+   and icon footer fold into it. Menu lists the rail destinations and reveals
+   BB's own footer controls while open. Phones and the collapsed sidebar keep
+   BB's native chrome. */
+.herdr-commands { display:none; }
+@media (min-width:768px) {
+  :root[data-herdr-theme] [data-side="left"][data-state="expanded"] [data-sidebar="sidebar"] > .herdr-commands {
+    display:flex; flex-direction:column; flex-shrink:0; border-top:1px solid var(--border-seam); font-size:12px;
+  }
+  :root[data-herdr-theme] [data-side="left"][data-state="expanded"] [data-sidebar="sidebar"]:has(> .herdr-commands) :is(
+    [data-testid="app-nav-rail"], [data-testid="nav-rail-header"] > button
+  ) { display:none; }
+  /* BB sizes the list inline as sidebar width minus the rail. */
+  :root[data-herdr-theme] [data-side="left"][data-state="expanded"] [data-sidebar="sidebar"]:has(> .herdr-commands) [data-testid="nav-rail-sidebar-body"] > div {
+    left:0; width:auto !important;
+  }
+  /* The desktop app moves history arrows into its title bar, leaving this
+     row with only New thread. Web clients keep the row for the arrows. */
+  :root[data-herdr-theme] [data-side="left"][data-state="expanded"] [data-sidebar="sidebar"]:has(> .herdr-commands) [data-testid="app-sidebar-top-reserve-row"]:not(:has([aria-label="Go back"])) { display:none; }
+  :root[data-herdr-theme] [data-side="left"][data-state="expanded"] [data-sidebar="sidebar"]:has(> .herdr-commands) > [data-testid="sidebar-footer-row"] { display:none; }
+  :root[data-herdr-theme] [data-side="left"][data-state="expanded"] [data-sidebar="sidebar"]:has(> .herdr-commands[data-open]) > [data-testid="sidebar-footer-row"] { display:flex; border-top:1px solid var(--border-seam); }
+}
+.herdr-commands-row { display:flex; align-items:center; gap:4px; padding:8px; }
+.herdr-commands button { cursor:pointer; padding:6px; min-height:32px; text-align:left; color:var(--muted-foreground); text-transform:lowercase; }
+.herdr-commands button:hover, .herdr-commands button[aria-current="page"], .herdr-commands button[aria-expanded="true"] { background:var(--state-hover); color:var(--foreground); }
+.herdr-commands button:focus-visible { outline:2px solid var(--ring); outline-offset:-2px; }
+.herdr-commands [data-herdr-menu-trigger] { margin-left:auto; }
+.herdr-command-menu { display:flex; flex-direction:column; padding:8px 8px 0; }
+.herdr-command-menu[hidden] { display:none; }
+.herdr-command-menu button { width:100%; }

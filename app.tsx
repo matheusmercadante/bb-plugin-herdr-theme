@@ -8,12 +8,14 @@ import "./sidebar.css";
 
 import { PalettePicker } from "./palette-picker";
 import "./palette-picker.css";
+import { mountSidebarCommands } from "./sidebar-commands";
 
 // BB 0.46 removed the experimental sidebarNavigation slot. Registering it
 // threw during setup, which stopped every slot, content script, and stylesheet
-// below from loading. BB's navigation rail now owns those commands.
+// below from loading. A content script now rebuilds the command line.
 export default definePluginApp((app) => {
   app.contentScripts.register({ id: "terminal-chrome", mount: mountChrome });
+  app.contentScripts.register({ id: "sidebar-commands", mount: mountSidebarCommands });
   app.slots.experimental_appOverlay({ id: "branch-details", component: BranchDetails });
   app.slots.settingsSection({ id: "about", title: "Color schemes", component: PalettePicker });
 });

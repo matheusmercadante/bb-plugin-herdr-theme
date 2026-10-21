@@ -7,7 +7,11 @@ Compatibility release for BB 0.46. Requires BB 0.46 or newer.
 - Stop registering the sidebar navigation slot, which BB 0.46 removed. The
   failed registration aborted plugin setup, so BB loaded only the palette
   colors and none of the framing, prompt, sidebar, or settings UI.
-- Remove the Herdr commands bar. BB's navigation rail now owns those commands.
+- Rebuild the commands line with a content script: new thread, search
+  threads, and a menu listing BB's rail destinations and Settings. While it
+  shows, the expanded desktop sidebar hides BB's navigation rail, New thread
+  row, and icon footer; the menu reveals that footer. Phones and the
+  collapsed sidebar keep BB's native chrome.
 - Frame the conversation column BB 0.46 renders: the split pane itself for a
   single pane, and the pane's inner column in split layouts.
 - Cut the frame line behind the new header action group.
