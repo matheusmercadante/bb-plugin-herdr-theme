@@ -7,6 +7,9 @@
   imported from the Zed syntax colors.
 - Add `scripts/import-zed-themes.py`, which reads installed Zed themes into
   palette records and VS Code code themes for the generator.
+- Show BB's navigation rail destinations again on BB 0.47. Its rail column,
+  with Settings, stays in place even when the rail is hidden, so hiding only
+  the destinations left an empty strip beside the thread list.
 
 ## 0.6.1
 

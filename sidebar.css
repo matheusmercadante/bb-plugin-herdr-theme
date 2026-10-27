@@ -202,8 +202,11 @@
   :root[data-herdr-theme] [data-side="left"][data-state="expanded"] [data-sidebar="sidebar"] > .herdr-commands {
     display:flex; flex-direction:column; flex-shrink:0; border-top:1px solid var(--border-seam); font-size:0.75rem;
   }
+  /* BB 0.47 keeps the rail's column, with Settings, inside its own nav even
+     when the rail is hidden. Hiding only the destinations there left an
+     empty strip, so from 0.47 the rail stays and shows them. */
   :root[data-herdr-theme] [data-side="left"][data-state="expanded"] [data-sidebar="sidebar"]:has(> .herdr-commands) :is(
-    [data-testid="app-nav-rail"], [data-testid="nav-rail-header"] > button
+    [data-testid="app-nav-rail"]:not([data-testid="sidebar-navigation-rail"] *), [data-testid="nav-rail-header"] > button
   ) { display:none; }
   /* BB sizes the list inline as sidebar width minus the rail. */
   :root[data-herdr-theme] [data-side="left"][data-state="expanded"] [data-sidebar="sidebar"]:has(> .herdr-commands) [data-testid="nav-rail-sidebar-body"] > div {
