@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.1
+
+Compatibility fix for BB 0.47.
+
+- List the rail destinations and Settings in the commands-line menu again.
+  BB 0.47 wraps the navigation rail in its `<nav>` instead of nesting one
+  inside it, and moved Settings out of the footer row, so the menu opened
+  empty and plugin pages were unreachable while the rail was hidden.
+
 ## 0.6.0
 
 Compatibility release for BB 0.46. Requires BB 0.46 or newer.

@@ -24,11 +24,16 @@ function commandButton(label: string, title: string, run: () => void) {
   return button;
 }
 
-/** Rail destinations and Settings, read when the menu opens. */
+/** Rail destinations and Settings, read when the menu opens. BB 0.47 wraps
+    the rail in its `<nav>` instead of nesting one inside, and moved Settings
+    out of the footer row, so neither wrapper is required. Home is the New
+    thread command above. */
 function menuSources() {
-  const rail = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-testid="app-nav-rail"] nav button[aria-label]'))
-    .filter(button => button.getAttribute("aria-label") !== "More");
-  const settings = document.querySelector<HTMLButtonElement>('[data-testid="sidebar-footer-row"] button[aria-label^="Settings"]');
+  const rail = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-testid="app-nav-rail"] button[aria-label]'))
+    .filter(button => !["Home", "More"].includes(button.getAttribute("aria-label") ?? ""));
+  const settings = document.querySelector<HTMLButtonElement>(
+    '[data-testid="sidebar-footer-row"] button[aria-label^="Settings"], [data-sidebar="sidebar"] button[aria-label^="Settings"]',
+  );
   return settings ? [...rail, settings] : rail;
 }
 
