@@ -3,6 +3,8 @@ import json, re
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 data = json.loads((ROOT / 'palettes/herdr.json').read_text())
+# Families imported from Zed by scripts/import-zed-themes.py.
+data.update(json.loads((ROOT / 'palettes/zed.json').read_text()))
 families = [
  ('catppuccin','Catppuccin','catppuccin','catppuccin_latte','catppuccin-mocha','catppuccin-latte'),
  ('tokyo-night','Tokyo Night','tokyo_night','tokyo_night_day','tokyo-night','github-light'),
@@ -14,6 +16,7 @@ families = [
  ('kanagawa','Kanagawa','kanagawa','kanagawa_lotus','kanagawa-wave','kanagawa-lotus'),
  ('rose-pine','Rosé Pine','rose_pine','rose_pine_dawn','rose-pine','rose-pine-dawn'),
  ('vesper','Vesper','vesper',None,'vesper','github-light'),
+ ('matte-black','Matte Black','matte_black','matt_white','./themes/matte-black-code-dark.json','./themes/matte-black-code-light.json'),
 ]
 def rgb(h): return [int(h[i:i+2],16) for i in (1,3,5)]
 def mix(a,b,t):return '#'+''.join(f'{round(x*(1-t)+y*t):02x}' for x,y in zip(rgb(a),rgb(b)))
@@ -30,7 +33,7 @@ def readable(color,backs,target=5.5):
  raise ValueError('Cannot achieve contrast')
 def companion(c):return max(['#000000','#ffffff'],key=lambda x:ratio(c,x))
 def tokens(p,light,adapted=False):
- bg=p['panel_bg'];ink=p['text']
+ bg=p['panel_bg'];ink=p['text'];bm=p.get('border_mix',.2)
  if adapted:bg=mix(p['mauve'],'#ffffff',.96);ink=mix(p['panel_bg'],'#000000',.25)
  sidebar=mix(bg,ink,.035);popover=mix(bg,ink,.025);backs=[bg,sidebar,popover]
  ink=readable(ink,backs,7)
@@ -48,9 +51,9 @@ def tokens(p,light,adapted=False):
  'secondary':mix(bg,ink,.06),'accent':mix(bg,ink,.06),'muted':mix(bg,ink,.09),
  'surface-recessed-solid':sidebar,'surface-recessed-soft-solid':mix(bg,ink,.025),
  'surface-raised-solid':popover,'sidebar-accent':mix(bg,accent,.10),
- 'border':mix(bg,ink,.2),'border-hairline':mix(bg,ink,.17),
+ 'border':mix(bg,ink,bm),'border-hairline':mix(bg,ink,bm*.85),
  'border-seam':mix(bg,ink,.10),'border-seam-vertical':'var(--border-seam)',
- 'sidebar-border':mix(bg,ink,.15),'input':mix(bg,ink,.3),
+ 'sidebar-border':mix(bg,ink,bm*.75),'input':mix(bg,ink,.3),
  'destructive':colors['red'],'destructive-text':colors['red'],
  'destructive-foreground':companion(colors['red']),
  'warning':colors['yellow'],'warning-text':colors['yellow'],'attention':colors['peach'],

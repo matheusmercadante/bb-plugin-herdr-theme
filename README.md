@@ -4,7 +4,7 @@
 
 Give BB a little terminal character. Herdr Theme frames conversations like
 terminal panes, keeps the prompt compact, and connects child threads with tree
-branches. Choose from eleven color families, each with light and dark versions.
+branches. Choose from twelve color families, each with light and dark versions.
 
 Inspired by [Herdr](https://herdr.dev/) and built for BB's threads and subthreads.
 Independent and unofficial.
@@ -26,7 +26,7 @@ Independent and unofficial.
 - **A terminal-style conversation.** Thin pane frames, highlighted titles, full-width transcripts, and a flat prompt.
 - **A readable thread tree.** Connected child-thread branches, clear selection, and colored activity indicators.
 - **Details when you want them.** Optional Git branch names beneath project-thread titles, including `main`.
-- **Eleven palette families.** Light and dark appearances, coordinated code highlighting, and a swatch picker in settings.
+- **Twelve palette families.** Light and dark appearances, coordinated code highlighting, and a swatch picker in settings.
 - **A bundled font.** JetBrains Mono is bundled. No font service or network request required.
 
 BB still owns the editor, attachments, voice controls, menus, keyboard shortcuts,

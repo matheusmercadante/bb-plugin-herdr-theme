@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0
+
+- Add Herdr Matte Black: the Zed themes Matte Black (dark) and Matt White
+  (light) with Herdr terminal styling, quieter borders, and code highlighting
+  imported from the Zed syntax colors.
+- Add `scripts/import-zed-themes.py`, which reads installed Zed themes into
+  palette records and VS Code code themes for the generator.
+
 ## 0.6.1
 
 Compatibility fix for BB 0.47.

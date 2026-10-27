@@ -1,7 +1,7 @@
 Give BB a little terminal character.
 
 Herdr Theme frames conversations like terminal panes, keeps transcripts full
-width, and draws child threads as a connected tree. Pick from eleven color
+width, and draws child threads as a connected tree. Pick from twelve color
 families, each with a light and a dark version. Turn on branch names to see the
 Git branch under each project thread.
 

@@ -229,5 +229,26 @@
         "#ffc799"
       ]
     }
+  },
+  {
+    "id": "matte-black",
+    "name": "Matte Black",
+    "adaptedLight": false,
+    "swatches": {
+      "light": [
+        "#f5f5f5",
+        "#ededed",
+        "#7f5500",
+        "#046c4e",
+        "#895100"
+      ],
+      "dark": [
+        "#121212",
+        "#1a1a1a",
+        "#f59e0b",
+        "#27a47d",
+        "#d97808"
+      ]
+    }
   }
 ]
